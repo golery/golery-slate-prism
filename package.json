@@ -5,13 +5,15 @@
   "license": "Apache-2.0",
   "repository": "git://github.com/GitbookIO/slate-prism.git",
   "main": "./dist/index.js",
-  "dependencies": {},
+  "dependencies": {
+    "golery-slate-code-block": "^0.16.0-golery.0"
+  },
   "peerDependencies": {
     "immutable": "*",
     "prismjs": "*",
     "react": "*",
     "react-dom": "*",
-    "@gitbook/slate": "^0.34.7"
+    "slate": "^0.44.6"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -32,15 +34,17 @@
     "prismjs": "^1.15.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "@gitbook/slate": "^0.34.7",
-    "@gitbook/slate-edit-code": "0.15.5",
-    "@gitbook/slate-hyperscript": "^0.5.22",
-    "@gitbook/slate-react": "^0.13.4"
+    "slate": "^0.44.6",
+    "slate-hyperscript": "^0.11.21",
+    "slate-react": "^0.21.12",
+    "slate-schema-violations": "^0.1.39",
+    "watchify": "^3.11.0"
   },
   "scripts": {
     "prepublish": "babel ./lib --out-dir ./dist",
     "lint": "eslint ./lib ./example",
-    "build-example": "browserify ./example/main.js -o ./example/bundle.js -t [ babelify --presets [ es2015 react stage-0 ] ]",
+    "build-example": "browserify ./example/main.js -o ./example/bundle.js -t [ babelify --presets [ es2015 react stage-0 ] ] -d",
+    "watch-example": "watchify ./example/main.js -v -d -o ./example/bundle.js -t [ babelify --presets [ es2015 react stage-0 ] ]",
     "serve-example": "http-server ./example/ -p 8080",
     "start": "npm run build-example; npm run serve-example",
     "deploy-example": "npm run build-example; gh-pages -d ./example"
