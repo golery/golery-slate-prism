@@ -3,11 +3,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Editor } from '@gitbook/slate-react';
-import PluginEditCode from '@gitbook/slate-edit-code';
+import { Editor } from 'slate-react';
+import PluginEditCode from 'golery-slate-code-block';
 import PluginPrism from '../lib/';
 
-import INITIAL_VALUE from './value';
+import INITIAL_VALUE from './value-json';
 
 const plugins = [
     PluginPrism({
@@ -19,8 +19,9 @@ const plugins = [
     })
 ];
 
-function renderNode(props: *) {
+function renderNode(props, editor, next) {
     const { node, children, attributes } = props;
+    console.log(node.type);
     switch (node.type) {
         case 'code_block':
             return (
@@ -34,7 +35,7 @@ function renderNode(props: *) {
         case 'heading':
             return <h1 {...attributes}>{children}</h1>;
         default:
-            return null;
+            return next();
     }
 }
 
