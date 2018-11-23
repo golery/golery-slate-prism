@@ -1,5 +1,5 @@
 {
-  "name": "@gitbook/slate-prism",
+  "name": "golery-slate-prism",
   "description": "A Slate plugin to highlight code blocks using PrismJS.",
   "version": "0.6.0",
   "license": "Apache-2.0",
